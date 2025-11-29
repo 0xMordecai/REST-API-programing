@@ -12,4 +12,7 @@ func main() {
 	}
 	defer result.Body.Close()
 	data, err := io.ReadAll(result.Body)
+	if err != nil {
+		panic(err)
+	}
 }
