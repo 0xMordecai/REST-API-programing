@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -15,4 +16,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Respose:", string(data))
 }
