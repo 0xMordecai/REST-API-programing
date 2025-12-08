@@ -19,3 +19,7 @@ func random(w http.ResponseWriter, r *http.Request) {
 		"value": randomGen.Intn(100),
 	})
 }
+
+func setSeed(w http.ResponseWriter, r *http.Request) {
+
+}
