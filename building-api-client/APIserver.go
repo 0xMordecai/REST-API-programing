@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"math/rand"
 	"net/http"
+	"strconv"
 )
 
 var token string
@@ -31,5 +32,11 @@ func setSeed(w http.ResponseWriter, r *http.Request) {
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
-
+	var data map[string]string
+	json.NewDecoder(r.Body).Decode(&data)
+	if data["user"] == "user" && data["password"] == "password" {
+		token = strconv.Itoa(rand.Intn(100000000000))
+		w.Header().Set("content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]string{"token": token})
+	}
 }
