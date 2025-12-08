@@ -10,3 +10,7 @@ func NewClient(baseURL string) *Client {
 		baseURL: baseURL,
 	}
 }
+
+type LoginResponse struct {
+	Token string `json:"token"`
+}
