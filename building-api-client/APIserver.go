@@ -44,5 +44,6 @@ func login(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
+	token = strconv.Itoa(rand.Intn(100000000000))
+	randomGen = rand.New(rand.NewSource(0))
 }
