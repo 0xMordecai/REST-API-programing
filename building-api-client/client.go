@@ -60,5 +60,6 @@ func (c *Client) Login(user, password string) error {
 	loginResponse := LoginResponse{}
 	json.Unmarshal(responseBody, &loginResponse)
 
+	c.token = loginResponse.Token
 	return nil
 }
