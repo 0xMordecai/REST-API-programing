@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"io"
 	"net/http"
 )
 
@@ -51,5 +52,11 @@ func (c *Client) Login(user, password string) error {
 	if resp.StatusCode != http.StatusOK {
 		return errors.New("invalid login")
 	}
+
+	responseBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
