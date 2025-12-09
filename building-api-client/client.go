@@ -39,6 +39,7 @@ func (c *Client) Login(user, password string) error {
 	if err != nil {
 		return err
 	}
+	req.Header.Set("Content-Type", "application/json")
 
 	return nil
 }
