@@ -41,5 +41,10 @@ func (c *Client) Login(user, password string) error {
 	}
 	req.Header.Set("Content-Type", "application/json")
 
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
 	return nil
 }
