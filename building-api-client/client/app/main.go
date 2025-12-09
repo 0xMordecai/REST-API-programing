@@ -27,4 +27,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Random value with seed 42: ", value)
 }
