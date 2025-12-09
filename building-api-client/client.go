@@ -79,4 +79,8 @@ func (c *Client) Random() (int, error) {
 		return 0, err
 	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return 0, errors.New("server invalid response")
+	}
 }
