@@ -11,6 +11,15 @@ import (
 var token string
 var randomGen *rand.Rand
 
+func main() {
+	token = strconv.Itoa(rand.Intn(100000000000))
+	randomGen = rand.New(rand.NewSource(0))
+	http.HandleFunc("/random", random)
+	http.HandleFunc("/seed", setSeed)
+	http.HandleFunc("/login", login)
+	log.Fatal(http.ListenAndServe(":8888", nil))
+}
+
 func random(w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get("Authorization") != "Bearer "+token {
 		w.WriteHeader(http.StatusUnauthorized)
@@ -42,13 +51,4 @@ func login(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 	}
-}
-
-func main() {
-	token = strconv.Itoa(rand.Intn(100000000000))
-	randomGen = rand.New(rand.NewSource(0))
-	http.HandleFunc("/random", random)
-	http.HandleFunc("/seed", setSeed)
-	http.HandleFunc("/login", login)
-	log.Fatal(http.ListenAndServe(":8888", nil))
 }
