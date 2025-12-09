@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/kings5layer/API-PROGRAMING/building-api-client/client"
@@ -14,6 +15,11 @@ func main() {
 
 	value, err := c.Random()
 	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Random value:", value)
+
+	if err = c.SetSeed(42); err != nil {
 		log.Fatal(err)
 	}
 }
