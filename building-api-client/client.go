@@ -63,3 +63,7 @@ func (c *Client) Login(user, password string) error {
 	c.token = loginResponse.Token
 	return nil
 }
+
+type RandomResponse struct {
+	Value int `json:"value"`
+}
