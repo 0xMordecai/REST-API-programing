@@ -102,4 +102,9 @@ func (c *Client) SetSeed(seed int) error {
 	data := SeedRequest{
 		Seed: seed,
 	}
+	body, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
+	return nil
 }
