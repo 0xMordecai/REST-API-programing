@@ -83,4 +83,9 @@ func (c *Client) Random() (int, error) {
 	if resp.StatusCode != http.StatusOK {
 		return 0, errors.New("server invalid response")
 	}
+
+	responseBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return 0, err
+	}
 }
